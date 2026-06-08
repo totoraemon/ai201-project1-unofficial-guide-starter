@@ -138,3 +138,39 @@ If cost and infrastructure constraints were entirely removed in production, the 
 * **Inputs:** *Retrieval Approach*, *Evaluation Plan*, and *Architecture Stages 4 & 5* specifications.
 * **Expected Output:** An execution pipeline function `query_guide(user_prompt: str)` that fetches the top 5 chunks, frames them inside an XML block, triggers a `gemini-2.5-flash` generation request, and streams back responses.
 * **Verification Strategy:** Fire all 5 evaluation test questions through the query pipeline sequentially. Compare system outputs manually against our hardcoded *Expected answers* to check for accuracy, and look out for structural markdown links to verify strict source grounding.
+
+---
+
+## Milestone 3 — Ingestion and chunking:
+CHUNK SAMPLE #1
+ID: src_1_chk_0
+Full Text:
+[Source: src_1 | Context: CPP Campus Dining Hub] Dining Locations - CPPE Dining Services | Skip to content | Dining Hours | AboutAbout Us Awards Management Our Chefs Jobs Contact Hours LocationsDining Locations GrubHub Food Truck Vending & ATMs Catering Robot Delivery Interactive Map Centerpointe Meal PlansMeal Plan Options Meal Plans Finder Meal Plan Account Access News | View AllDining HallQuick BitesHealthy EatsConvenience StoresResidentialBeveragesLate NightFood Trucks | BRIC Break | BRIC (Building 42) | Monday (Summer Break) Closed
+Metadata Source: https://cppdining.com/dining-locations/
+
+CHUNK SAMPLE #2
+ID: src_1_chk_1
+Full Text:
+[Source: src_1 | Context: CPP Campus Dining Hub] Monday (Summer Break) Closed | View DetailsA healthy food stand, located inside the Bronco Recreational and Intramural Complex (BRIC), that serves customizable acai bowls, smoothies, and other healthy snacks like protein bars to students and visitors. It provides a convenient and affordable option for a healthy pick-me-up, with service windows both inside the BRIC and outside at the front and on the pool deck | Centerpointe Dining | Building 72 | Summer hours: Monday 11 AM - 6 PM
+Metadata Source: https://cppdining.com/dining-locations/
+
+CHUNK SAMPLE #3
+ID: src_1_chk_2
+Full Text:
+[Source: src_1 | Context: CPP Campus Dining Hub] Summer hours: Monday 11 AM - 6 PM | View DetailsCenterpointe Dining Commons at Cal Poly Pomona is a 35,000-square-foot all-you-care-to-eat dining hall offering diverse food stations, campus-grown produce, and sustainable dining options for students, faculty, staff, and the public. | Element Cafe | College of Business Administration (Building 164) | View DetailsThe Element Coffee & Food menu offers a variety of sandwiches and bowls consisting of fresh ingredients to deliver a delicious flavor! | ENV Cafe | College of Environmental Design (Building 7)
+Metadata Source: https://cppdining.com/dining-locations/
+
+CHUNK SAMPLE #4
+ID: src_1_chk_3
+Full Text:
+[Source: src_1 | Context: CPP Campus Dining Hub] College of Environmental Design (Building 7) | View DetailsLocated at the College of Environmental Design (Building 7), ENV Cafe offers trendy drinks from lattes to lemonades, shakes, frappes, teas, smoothies, boba drinks, pastries, and breakfast and lunch burritos. | Farm Store at Kellogg Ranch | AGRIscapes (Building 211) | Monday 10 AM - 6 PM
+Metadata Source: https://cppdining.com/dining-locations/
+
+CHUNK SAMPLE #5
+ID: src_1_chk_4
+Full Text:
+[Source: src_1 | Context: CPP Campus Dining Hub] Monday 10 AM - 6 PM | View DetailsStudent-staffed store at Kellogg Ranch featuring fresh produce, meats, and other food products from the campus farm, orchards, and greenhouses, alongside locally sourced and specialty items like CPP-made wines, beers, and honeys. It also sells ornamental and edible plants from the campus nursery and offers student-designed apparel and unique gift baskets. | FitbitesCampus | Residence Suites (Building 52)
+Metadata Source: https://cppdining.com/dining-locations/
+
+---
+
