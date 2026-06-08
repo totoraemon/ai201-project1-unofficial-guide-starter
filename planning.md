@@ -61,6 +61,7 @@ My sources consist heavily of highly structured campus directory links, store op
 If deploying this to real users at scale, running a massive 70-billion parameter model like `llama-3.3-70b-versatile` purely for extracting dense vector representations presents massive latency challenges. While its parameter scale grants it a deep semantic understanding of complex student slang, messy context fragments, and campus abbreviations (e.g., "BSC", "CPP"), the hosting overhead is extremely heavy compared to lightweight, dedicated embedding endpoints.
 
 If cost and infrastructure constraints were entirely removed in production, the primary trade-off we would evaluate is latency vs. contextual depth. Because campus dining is entirely localized and English-centric, we would gladly trade away broad multilingual capabilities and massive context windows in exchange for lightning-fast search latency and a vocabulary index highly fine-tuned for high-density, short text student discourse.
+
 ---
 
 ## Evaluation Plan
@@ -77,61 +78,44 @@ If cost and infrastructure constraints were entirely removed in production, the 
 
 ## Anticipated Challenges
 
-1. **Information Splitting across Table Boundaries:** Because much of the campus directory info (like hours, location numbers, and menus) lives within dense markdown structures and HTML matrices, standard text chunking could easily shear a dining hall's name away from its operating hours. This would result in completely unanchored data fragments inside the vector store.
-2. **Hallucination of Non-Existent Menus/Prices:** Since open-source student commentary and unofficial websites update infrequently, the Generation model (`gemini-2.5-flash` / `gemini-2.5-pro`) might rely on its pre-trained global knowledge to invent generic pricing or menu options when the local vector store context is sparse. This directly undermines our goal of delivering an accurate campus-specific guide.
+1. Because much of the campus directory info (like hours, location numbers, and menus) lives within dense markdown structures and HTML matrices, standard text chunking could easily shear a dining hall's name away from its operating hours. This would result in completely unanchored data fragments inside the vector store.
+
+2. Since open-source student commentary and unofficial websites update infrequently, the Generation model (`gemini-2.5-flash` / `gemini-2.5-pro`) might rely on its pre-trained global knowledge to invent generic pricing or menu options when the local vector store context is sparse. This directly undermines our goal of delivering an accurate campus-specific guide.
 
 ---
 
 ## Architecture
 
-==========================================================================================
                          UNOFFICIAL CAMPUS DINING GUIDE: RAG PIPELINE
-==========================================================================================
 
- [STAGE 1: DOCUMENT INGESTION]
-   │
-   ├─► Raw Sources: Student Blogs, Reddit Threads, Yelp Reviews, Video Transcripts
-   │
-   └─► Tool: Python Preprocessing Script
-        │   (Strips raw HTML/JSON boilerplates, isolates student text body)
-        ▼
- [STAGE 2: CHUNKING]
-   │
-   └─► Tool: Custom Regex Segmenter (Python)
-        │   ┌────────────────────────────────────────────────────────────────────────┐
-        │   │  • Strategy: Splits text on structural markdown headers (### Stall)   │
-        │   │  • Hyperparameters: Chunk Size = 500 Chars  |  Overlap = 100 Chars      │
-        │   │  • Metadata Injection: Prepends parent location/canteen info to chunk  │
-        │   └────────────────────────────────────────────────────────────────────────┘
-        ▼
- [STAGE 3: EMBEDDING & VECTOR STORE]
-   │
-   ├─► Embedding Model: google-genai API (text-embedding-004) -> 768 Dimensions
-   │
-   └─► Vector Database Store: ChromaDB / FAISS
-        │   (Stores dense vectors mapped to student context strings + source URLs)
-        ▼
- [STAGE 4: RETRIEVAL]
-   │
-   ├─► User Input Query ──► [ Vector Similarity Search ] ──► Compares against Vector DB
-   │
-   └─► Hyperparameters: Top-K = 5 Chunks
-        │   (Extracts the 5 most semantically relevant text fragments)
-        ▼
- [STAGE 5: GENERATION]
-   │
-   ├─► Context Assembly: Wraps the 5 retrieved student chunks inside XML security tags
-   │
-   ├─► Prompt Blueprint: Grounded System Prompt
-   │    │   (Enforces zero outside extrapolation; demands exact inline markdown URLs)
-   │    ▼
-   ├─► Generation Model: Gemini API (gemini-2.5-flash)
-   │
-   └─► Final Output: Grounded, slang-aware student guide response with direct source links
-        │
-        └─► e.g., "...the bento box costs $65 NTD ([Source 3](https://...)) but lines peak at 12 PM."
+[STAGE 1: DOCUMENT INGESTION]
+- Raw Sources: Student Blogs, Reddit Threads, Yelp Reviews, Video Transcripts
+- Tool: Python Preprocessing Script
+     - (Strips raw HTML/JSON boilerplates, isolates student text body)
 
-==========================================================================================
+[STAGE 2: CHUNKING]
+- Tool: Custom Regex Segmenter (Python)
+     - Strategy: Splits text on structural markdown headers (### Stall)
+     - Hyperparameters: Chunk Size = 500 Chars  |  Overlap = 100 Chars
+     - Metadata Injection: Prepends parent location/canteen info to chunk
+
+[STAGE 3: EMBEDDING & VECTOR STORE]
+- Embedding Model: llama-3.3-70b-versatile
+- Vector Database Store: LightweightVectorStore
+     - (Stores dense vectors mapped to student context strings + source URLs)
+
+[STAGE 4: RETRIEVAL]
+- User Input Query ──► [ Vector Similarity Search ] ──► Compares against Vector DB
+- Hyperparameters: Top-K = 5 Chunks
+     - (Extracts the 5 most semantically relevant text fragments)
+
+[STAGE 5: GENERATION]
+- Context Assembly: Wraps the 5 retrieved student chunks inside XML security tags
+- Prompt Blueprint: Grounded System Prompt
+     - (Enforces zero outside extrapolation; demands exact inline markdown URLs)
+- Generation Model: Gemini API (gemini-2.5-flash)
+- Final Output: Grounded, slang-aware student guide response with direct source links
+     - e.g., "...the bowl costs $12 ([Source 3](https://...)) but lines peak at 12 PM."
 
 ---
 
@@ -139,14 +123,14 @@ If cost and infrastructure constraints were entirely removed in production, the 
 
 ### 1. Data Ingestion & Chunking
 * **AI Tool:** Gemini
-* **Inputs:** *Chunking Strategy* section, sample markdown text from our document matrix, and the target specifications (500 Chars size, 100 Chars overlap).
-* **Expected Output:** A clean Python script (`ingest.py`) utilizing standard string tools or regex to split files securely into overlapping windows, passing forward parent source metadata strings attached to each block.
-* **Verification Strategy:** Run the code locally on Source #5 and print out lengths and boundary fragments of three consecutive chunks to ensure characters uniformly sit around 500 characters with correct context preservation.
+* **Inputs:** *Chunking Strategy* section, sample markdown text from our document matrix, and the target specifications (500 chars size, 100 chars overlap).
+* **Expected Output:** A clean Python script (`rag_pipeline.py`) utilizing standard string tools or regex to split files securely into overlapping windows, passing forward parent source metadata strings attached to each block.
+* **Verification Strategy:** Run the code locally on sources and print out 5 test cases, checking lengths and boundary fragments of three consecutive chunks to ensure characters uniformly sit around 500 characters with correct context preservation.
 
 ### 2. Embedding & Vector DB Storage
 * **AI Tool:** Gemini
-* **Inputs:** *Architecture Stage 3* parameters (`text-embedding-004` via the `google-genai` SDK, ChromaDB/FAISS setup documentation).
-* **Expected Output:** Modular Python code initializing the database, connecting to the Gemini client API, mapping text chunks into dense embeddings, and persisting them cleanly to local disk storage.
+* **Inputs:** *Architecture Stage 3* parameters
+* **Expected Output:** Modular Python code initializing the local storage, connecting to the API, mapping text chunks into dense embeddings, and persisting them cleanly to local disk storage.
 * **Verification Strategy:** Execute a quick collection count assert query to verify that the final database record count perfectly mirrors the total chunk count generated by our ingestion script.
 
 ### 3. Retrieval & Generation Interface
