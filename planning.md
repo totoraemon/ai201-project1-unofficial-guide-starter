@@ -174,3 +174,40 @@ Metadata Source: https://cppdining.com/dining-locations/
 
 ---
 
+## Milestone 4 — Embedding and retrieval:
+TEST CASE #1: Querying vector space for:
+   'Where are the vending machines located inside the BSC?'
+   SUCCESS | Top Match Score: 0.9071
+   Top Chunk Text: [Source: src_9 | Context: CPP Campus Dining Hub] Vending MachinesThe BSC has vending machines positioned on the first floor, providing additional snack and drink options during BSC operational hours. Whether you’re studying or simply passing through, satisfy your cravings with ease. | In case you encounter any issues, a dedicated support team is just a phone call away. Find the support team information listed on the vending machines for prompt assistance. | New Furniture & Charging StationsThe BSC has various lounge spaces and charging stations available on a first come, first served basis.
+   
+TEST CASE #2: Querying vector space for:
+   'Are there any vegan or vegetarian options at Centerpointe?'
+   SUCCESS | Top Match Score: 0.8220
+   Top Chunk Text: [Source: src_4 | Context: CPP Campus Dining Hub] Campus Map | Building 72: Residence Halls - Centerpointe DiningLocated in the core of the Cal Poly Pomona campus, Centerpointe Dining Commons is a state of the art all-you-care-to-eat dining facility. Centerpointe offers delicious and nutritious food stations with items such as handmade tortillas, a sushi bar, a salad bar featuring Cal Poly Pomona grown produce, a carving station, plenty of vegan and vegetarian options and so much more!
+
+TEST CASE #3: Querying vector space for:
+   'Can I use my Bronco Bucks or meal plan swipes at Vista Market?'
+   SUCCESS | Top Match Score: 0.6530
+   Top Chunk Text: [Source: src_2 | Context: CPP Campus Dining Hub] Bronco Bucks | Learn about our Bronco Bucks program: just deposit money into your Bronco Bucks Account, and you can use your Bronco One Card to make purchases on campus. Even better - it's easy for you (or others) to add more money.
+
+---
+
+## Milestone 5 — Generation and interface:
+TEST CASE #1: Are there any vegan or vegetarian options at Centerpointe?
+ANSWER: Yes, Centerpointe Dining Commons offers plenty of vegan and vegetarian options.
+SOURCES:
+- https://cppdining.com/dining-locations/
+- https://www.cpp.edu/maps/text-map.php?id=458829&list=loc
+- https://www.cpp.edu/openhouse/dining.shtml
+
+TEST CASE #2: What is Centerpointe?
+ANSWER: Centerpointe is a state of the art all-you-care-to-eat dining facility located in the core of the Cal Poly Pomona campus, specifically in Building 72: Residence Halls. It offers various food stations, including handmade tortillas, a sushi bar, a salad bar featuring Cal Poly Pomona grown produce, a carving station, and plenty of vegan and vegetarian options. Additionally, it features a Lollicup Fresh and Jones Coffee Roasters program with coffee beverages, flavored milk tea, fruit tea, slushes, and smoothies. Centerpointe is open to the public and has a specialty late night dining program for additional food service hours.
+SOURCES:
+- https://cppdining.com/dining-locations/
+- https://www.cpp.edu/maps/text-map.php?id=458829&list=loc
+- https://www.cpp.edu/openhouse/dining.shtml
+
+TEST CASE #3: What is Fitbites?
+ANSWER: I do not possess sufficient reference documentation to answer this question accurately.
+SOURCES:
+- None utilized.
