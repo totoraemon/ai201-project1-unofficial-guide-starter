@@ -10,6 +10,8 @@ from typing import Dict, List, Tuple
 from dotenv import load_dotenv
 from groq import Groq
 import gradio as gr
+# NEW IMPORT: Added sentence-transformers for dense semantic embeddings
+from sentence_transformers import SentenceTransformer
 
 # Load environment variables from .env file
 load_dotenv()
@@ -35,6 +37,11 @@ TARGET_SOURCES = [
     {"id": "src_13", "url": "https://www.goomoteashop.com/"},
     {"id": "src_14", "url": "https://www.habitburger.com/locations/claremont/"}
 ]
+
+# NEW INITIALIZATION: Load the local transformer model globably
+print("=== INITIALIZING SEMANTIC EMBEDDING MODEL ===")
+EMBEDDING_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+print("Model loaded successfully.")
 
 # ==============================================================================
 # STANDARD LIBRARY HTML STRIPPER
@@ -190,39 +197,21 @@ def chunk_text(cleaned_text: str, source_id: str, source_url: str) -> List[Dict]
     return chunks
 
 # ==============================================================================
-# PHASE 4: REFACTORED VECTOR STORE WITH BALANCED VOCABULARY WEIGHTS
+# PHASE 4: MODIFIED DENSE VECTOR STORE (SENTENCE TRANSFORMERS)
 # ==============================================================================
 class LightweightVectorStore:
     def __init__(self):
         self.database: List[Dict] = []
 
-    def _generate_simulated_embedding(self, text: str) -> List[float]:
-        # Balanced vocabulary targeting test criteria and noun entities
-        vocabulary_dimensions = [
-            "vending", "machines", "bsc", "amenities", "floor", "first",
-            "vegan", "vegetarian", "centerpointe", "dining", "produce",
-            "bronco", "bucks", "swipes", "meal", "plan", "vista", "market",
-            "where", "located", "inside", "building", "hours", "open", "closed",
-            "price", "bento", "noodle", "rice", "curry", "chicken", "stall", "canteen",
-            "budget", "spend", "cheap", "expensive", "queue", "wait", "taste", "delicious",
-            "free", "discount", "pantry", "grocery", "groceries", "healthy", "nutrition",
-            "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
-            "am", "pm", "operation", "schedule", "time", "breakfast", "lunch", "dinner"
-        ]
+    def _generate_transformer_embedding(self, text: str) -> List[float]:
+        # NEW METHOD: Generates a dense 384-dimensional semantic embedding via MiniLM
+        embedding = EMBEDDING_MODEL.encode(text, convert_to_numpy=True)
         
-        vector = [0.0] * len(vocabulary_dimensions)
-        clean_words = re.findall(r'\b\w+\b', text.lower())
-        
-        for i, word in enumerate(vocabulary_dimensions):
-            count = clean_words.count(word)
-            # Apply Noun-Boosting scale parameter to target items
-            if word in ["vending", "machines", "bsc", "vegan", "vegetarian", "swipes", "bucks", "centerpointe"]:
-                vector[i] = float(count * 3.0)
-            else:
-                vector[i] = float(count)
-            
-        magnitude = math.sqrt(sum(val ** 2 for val in vector))
-        return [val / magnitude for val in vector] if magnitude > 0 else vector
+        # Calculate vector magnitude for normalization
+        magnitude = math.sqrt(sum(val ** 2 for val in embedding))
+        if magnitude > 0:
+            return [float(val / magnitude) for val in embedding]
+        return [float(val) for val in embedding]
 
     def add_chunks(self, processed_chunks: List[Dict]):
         for chunk in processed_chunks:
@@ -230,15 +219,21 @@ class LightweightVectorStore:
                 "chunk_id": chunk["chunk_id"],
                 "chunk_text": chunk["chunk_text"],
                 "metadata": chunk["metadata"],
-                "vector_embedding": self._generate_simulated_embedding(chunk["chunk_text"])
+                # NEW CALL: Replaced manual keyword tracking with transformer execution
+                "vector_embedding": self._generate_transformer_embedding(chunk["chunk_text"])
             })
 
     def retrieve_relevant_context(self, query_string: str, k: int = 5) -> List[Dict]:
-        query_vector = self._generate_simulated_embedding(query_string)
+        # NEW CALL: Convert incoming search strings into a dense semantic vector space
+        query_vector = self._generate_transformer_embedding(query_string)
         scored_results = []
         for record in self.database:
             similarity_score = sum(q * d for q, d in zip(query_vector, record["vector_embedding"]))
-            scored_results.append({"score": similarity_score, "chunk_text": record["chunk_text"], "metadata": record["metadata"]})
+            scored_results.append({
+                "score": similarity_score, 
+                "chunk_text": record["chunk_text"], 
+                "metadata": record["metadata"]
+            })
         scored_results.sort(key=lambda x: x["score"], reverse=True)
         return scored_results[:k]
 
@@ -254,7 +249,8 @@ def ask_campus_guide(question: str) -> Tuple[str, List[str], List[Dict]]:
     source_urls = set()
     
     for match in matched_chunks:
-        if match["score"] > 0.001: 
+        # MiniLM vectors operate globally on a higher baseline score scale
+        if match["score"] > 0.10: 
             context_blocks.append(match["chunk_text"])
             source_urls.add(match["metadata"]["source_url"])
             

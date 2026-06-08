@@ -39,10 +39,10 @@ Official campus dining portals usually offer nothing more than menus, operating 
 ## Chunking Strategy
 
 **Chunk size:**
-500 characters.
+500 characters (100 words).
 
 **Overlap:**
-100 characters.
+100 characters (20 words).
 
 **Reasoning:**
 My sources consist heavily of highly structured campus directory links, store operational matrices, and short student reviews/menu items. A smaller, precise chunk size of 500 characters guarantees that specific details (such as a single dining hall’s hours or a specific menu item profile like "Fitbites salad bowls") stay contained within a tight semantic window without being diluted by unrelated campus locations. The 100-character overlap balances this constraint by preserving necessary context across structural shifts or markdown tables, ensuring that location tags or parent headers are not cut off mid-sentence during splitting.
@@ -52,15 +52,15 @@ My sources consist heavily of highly structured campus directory links, store op
 ## Retrieval Approach
 
 **Embedding model:**
-`llama-3.3-70b-versatile`
+`all-MiniLM-L6-v2`
 
 **Top-k:**
 5 chunks
 
 **Production tradeoff reflection:**
-If deploying this to real users at scale, running a massive 70-billion parameter model like `llama-3.3-70b-versatile` purely for extracting dense vector representations presents massive latency challenges. While its parameter scale grants it a deep semantic understanding of complex student slang, messy context fragments, and campus abbreviations (e.g., "BSC", "CPP"), the hosting overhead is extremely heavy compared to lightweight, dedicated embedding endpoints.
+The transformer model eliminates the manual maintenance of vocabulary checklists. While initally completing this project, I utilized a different embedding model and had to specify multiple keywords of different categories. Even with the list, the model still failed to properly respond to user queries. With the `all-MiniLM-L6-v2` embedding model, the system can parse through synonyms, structural changes, and potentially misspelled inputs. The main difference is that it requires Python dependencies (`torch`, `sentence-transformers`, `numpy`).
 
-If cost and infrastructure constraints were entirely removed in production, the primary trade-off we would evaluate is latency vs. contextual depth. Because campus dining is entirely localized and English-centric, we would gladly trade away broad multilingual capabilities and massive context windows in exchange for lightning-fast search latency and a vocabulary index highly fine-tuned for high-density, short text student discourse.
+Additionally, my program utilizes a native database with `LightweightVectorStore`, keeping query latency beneath 5 milliseconds. However, restarting the script forces the pipeline to crawl, parse, clean, and re-embed all 14 target web nodes from scratch. If any source URL experiences downtime or anti-bot blocks during startup, those locations vanish from memory. This was evident through my multiple runs of my program as I could oneasily say an hour was lost on ending the program as I had to fix the line of code that was wrong, delete the created data files, and re-run the program (which loaded all of the sources, ran the test chunks, and ran the retrieval chunks before loading the webpage).
 
 ---
 
@@ -70,7 +70,7 @@ If cost and infrastructure constraints were entirely removed in production, the 
 |---|----------|-----------------|
 | 1 | Where can I find healthy or vegetarian-friendly options? | Fitbites offers salad bowls of multiple varieties. |
 | 2 | What is Goomo? | Goomo is a nearby boba shop that provides cheap snacks and drinks. |
-| 3 | What are some of the popular foods at Goomo? | Their fruit teas and popcorn chicken are some of their most purchased items. |
+| 3 | What foods are offered at Vista Market? | Vista Market provides a wide assortment of snacks and meals, from fresh to frozen. |
 | 4 | What are meal points? | Meal points are plans that students can purchase to spend on food. |
 | 5 | What type of food does Fitbites serve? | Fitbites (located near the Residence Suites) serves warm bowls, salads, hot subs, and paninis. |
 
@@ -115,7 +115,7 @@ If cost and infrastructure constraints were entirely removed in production, the 
      - (Enforces zero outside extrapolation; demands exact inline markdown URLs)
 - Generation Model: Gemini API (gemini-2.5-flash)
 - Final Output: Grounded, slang-aware student guide response with direct source links
-     - e.g., "...the bowl costs $12 ([Source 3](https://...)) but lines peak at 12 PM."
+     - e.g., "...the bowl costs $12 (source) but lines peak at 12 PM."
 
 ---
 
@@ -131,7 +131,7 @@ If cost and infrastructure constraints were entirely removed in production, the 
 * **AI Tool:** Gemini
 * **Inputs:** *Architecture Stage 3* parameters
 * **Expected Output:** Modular Python code initializing the local storage, connecting to the API, mapping text chunks into dense embeddings, and persisting them cleanly to local disk storage.
-* **Verification Strategy:** Execute a quick collection count assert query to verify that the final database record count perfectly mirrors the total chunk count generated by our ingestion script.
+* **Verification Strategy:** Execute a quick collection count assert query to verify that the final database record count perfectly mirrors the total chunk count generated by our ingestion script and print 3 test cases.
 
 ### 3. Retrieval & Generation Interface
 * **AI Tool:** Gemini
@@ -193,21 +193,27 @@ TEST CASE #3: Querying vector space for:
 ---
 
 ## Milestone 5 — Generation and interface:
-TEST CASE #1: Are there any vegan or vegetarian options at Centerpointe?
-ANSWER: Yes, Centerpointe Dining Commons offers plenty of vegan and vegetarian options.
-SOURCES:
-- https://cppdining.com/dining-locations/
-- https://www.cpp.edu/maps/text-map.php?id=458829&list=loc
-- https://www.cpp.edu/openhouse/dining.shtml
+Question 1: Where can I find healthy or vegetarian-friendly options?
+- Expected answer: Fitbites offers salad bowls of multiple varieties.
+- Actual answer: You can find healthy options at the Farm Store, which sells fresh produce grown and sold from the campus farm, orchards, and greenhouses. Additionally, the Poly Fresh Market and the Student-staffed store at Kellogg Ranch (FitbitesCampus) offer fresh produce. Vegetarian-friendly options may include items like canned vegetables, fruits, and grains available in Poly Pantry bags, such as bell peppers, potatoes, tomatoes, onions, cucumbers, zucchini, apples, bananas, kiwis, pears, and oranges, as well as non-dairy milk alternatives like almond milk, coconut milk, soy milk, and oat milk.
+- Source(s): https://asi.cpp.edu/services/poly-pantry/, https://cppdining.com/dining-locations/, https://www.cpp.edu/campus-life/housing-dining.shtml
 
-TEST CASE #2: What is Centerpointe?
-ANSWER: Centerpointe is a state of the art all-you-care-to-eat dining facility located in the core of the Cal Poly Pomona campus, specifically in Building 72: Residence Halls. It offers various food stations, including handmade tortillas, a sushi bar, a salad bar featuring Cal Poly Pomona grown produce, a carving station, and plenty of vegan and vegetarian options. Additionally, it features a Lollicup Fresh and Jones Coffee Roasters program with coffee beverages, flavored milk tea, fruit tea, slushes, and smoothies. Centerpointe is open to the public and has a specialty late night dining program for additional food service hours.
-SOURCES:
-- https://cppdining.com/dining-locations/
-- https://www.cpp.edu/maps/text-map.php?id=458829&list=loc
-- https://www.cpp.edu/openhouse/dining.shtml
+Question 2: What is Goomo?
+- Expected answer: Goomo is a nearby boba shop that provides cheap snacks and drinks.
+- Actual answer: Goomo Tea Shop is a local bubble tea destination in Walnut, CA, dedicated to serving fresh, handcrafted tea and drinks with natural ingredients.
+- Source(s): https://asi.cpp.edu/services/poly-pantry/, https://cppdining.com/dining-locations/https://www.goomoteashop.com/
 
-TEST CASE #3: What is Fitbites?
-ANSWER: I do not possess sufficient reference documentation to answer this question accurately.
-SOURCES:
-- None utilized.
+Question 3: What foods are offered at Vista Market?
+- Expected answer: Vista Market provides a wide assortment of snacks and meals, from fresh to frozen.
+- Actual answer: Vista Market offers a mix of essentials for home-cooked meals, personal items, grab-and-go options like sushi and parfaits, and other grocery staples.
+- Sources: https://asi.cpp.edu/services/poly-pantry/, https://cppdining.com/dining-locations/, https://www.cpp.edu/maps/text-map.php?id=27142&list=cat, https://www.cpp.edu/openhouse/dining.shtml
+
+Question 4: What are meal points?
+- Expected answer: Meal points are plans that students can purchase to spend on food.
+- Actual answer: I do not possess sufficient reference documentation to answer this question accurately.
+- Sources: https://cppdining.com/dining-locations/, https://www.cpp.edu/campus-life/housing-dining.shtml, https://www.cpp.edu/maps/text-map.php?id=458829&list=loc
+
+Question 5: What type of food does Fitbites serve?
+- Expected answer: Fitbites (located near the Residence Suites) serves warm bowls, salads, hot subs, and paninis.
+- Actual answer: Fitbites serves a fusion of diverse cuisines, including warm bowls, salads, hot subs, and paninis. They also offer savory bites such as mozzarella sticks and fried zucchini to add to meals.
+- Sources: https://asi.cpp.edu/services/poly-pantry/, https://cppdining.com/dining-locations/
