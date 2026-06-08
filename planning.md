@@ -9,8 +9,6 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
-
 Domain of Choice: Campus Dining
 
 Official campus dining portals usually offer nothing more than menus, operating hours, and polished marketing photos. This domain captures the reality of campus eating: which dining halls to avoid at peak hours, the best value-for-money meal plan hacks, and more. This knowledge is hard to find because it lives in fragmented Reddit threads, casual Discord chats, and word-of-mouth advice that disappears as seniors graduate.
@@ -19,99 +17,72 @@ Official campus dining portals usually offer nothing more than menus, operating 
 
 ## Documents
 
-<!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
-     Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
-
 | # | Source | Type | URL or file path |
-|---|--------|------|-----------------|
-| 1 | Miss Tam Chiak | Website | https://www.misstamchiak.com/ntu/ |
-| 2 | Catharctic Life | Short Review | https://catharticstudent.wordpress.com/2017/05/18/ntu-life-top-16-best-campus-food-at-ntu/ |
-| 3 | Happy Cow | Dietary Options | https://www.happycow.net/reviews/national-taiwan-university-taipei-61065 |
-| 4 | Home Sweet Home | Local Guide | https://en.hshsharehouse.com/top-eats-and-fun-spots-guide-for-ntu-international-students/ |
-| 5 | The Smart Local | Blog Guide | https://thesmartlocal.com/read/ntu-food/ |
-| 6 | Reddit | Recommendations | https://www.reddit.com/r/taiwan/comments/1fbqzg9/what_do_college_students_eat_on_a_daily_basis/ |
-| 7 | Reddit | Recommendations | https://www.reddit.com/r/NTU/comments/15ktgd7/best_eateries_on_campus/ |
-| 8 | Reddit | Food Reviews | https://www.reddit.com/r/NTU/comments/1b17qxm/food_reviews_and_reccomendations/ |
-| 9 | Reddit | Recommendations | https://www.reddit.com/r/NTU/comments/w0wi4b/list_of_places_to_eat_at_ntu_food/ |
-| 10 | Reddit | Recommendations | https://www.reddit.com/r/taiwan/comments/snpsqo/budgetfriendly_dim_sum_restaurant_attracts_fans/ |
+| --- | --- | --- | --- |
+| 1 | CPP Foundation Dining Hub | Campus Portal Website | [https://cppdining.com/dining-locations/](https://cppdining.com/dining-locations/) |
+| 2 | CPP Housing & Residential Dining Portal | Campus Portal Website | [https://www.cpp.edu/campus-life/housing-dining.shtml](https://www.cpp.edu/campus-life/housing-dining.shtml) |
+| 3 | Open House Special Operation Matrix | Campus Informational Directory | [https://www.cpp.edu/openhouse/dining.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fopenhouse%2Fdining.shtml) |
+| 4 | Building 72 Mapping Data (Centerpointe & Lollicup) | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=458829&list=loc](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D458829%26list%3Dloc) |
+| 5 | Building 52 & 35 Operations Node | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=27142&list=cat](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D27142%26list%3Dcat) |
+| 6 | Building 1070574 Geolocation Map (Fitbites) | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=1070574&list=loc](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D1070574%26list%3Dloc) |
+| 7 | Housing Staff Administration Records | Campus Informational Directory | [https://www.cpp.edu/housing/about/staff-directory.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fhousing%2Fabout%2Fstaff-directory.shtml) |
+| 8 | ASI Poly Pantry Portal | Campus Portal Website | [https://asi.cpp.edu/services/poly-pantry/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Fservices%2Fpoly-pantry%2F) |
+| 9 | ASI BSC Amenities Index (Qdoba, Saddles, Vending) | Campus Informational Directory | [https://asi.cpp.edu/facilities/bsc/bsc-amenities/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Ffacilities%2Fbsc%2Fbsc-amenities%2F) |
+| 10 | ASI Bronco Student Center General Info | Campus Informational Directory | [https://asi.cpp.edu/facilities/bsc/bsc-info/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Ffacilities%2Fbsc%2Fbsc-info%2F) |
+| 11 | CPP PolyCentric University News | Campus News Article | [https://www.cpp.edu/polycentric/index.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fpolycentric%2Findex.shtml) |
+| 12 | CPP Student Services Gateway | Campus Portal Website | [https://www.cpp.edu/student-gateway/](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fstudent-gateway%2F) |
+| 13 | Goomo Tea Shop Homepage | Company Website | [https://www.goomoteashop.com/](https://www.google.com/search?q=https%3A%2F%2Fwww.goomoteashop.com%2F) |
+| 14 | The Habit Burger & Grill Tracker | Company Website | [https://www.habitburger.com/locations/claremont/](https://www.google.com/search?q=https%3A%2F%2Fwww.habitburger.com%2Flocations%2Fclaremont%2F) |
 
 ---
 
 ## Chunking Strategy
 
-<!-- How will you split documents into chunks?
-     State your chunk size (in tokens or characters), overlap size, and explain why those
-     numbers fit the structure of your documents.
-     A review-heavy corpus warrants different chunking than a long FAQ. -->
-
 **Chunk size:**
-700 characters (approximately 80–120 tokens).
+500 characters.
 
 **Overlap:**
-150 characters (approximately 20 tokens).
+100 characters.
 
 **Reasoning:**
-Campus dining data is uniquely fragmented. Subreddit comment threads and reviews contain high-density, localized advice (e.g., a single sentence warning about a food stall's peak queue times or a specific dietary allergen). A large chunk size (like 2,000 characters) would dilute these tips with surrounding, unrelated noise.
-
-The 400-character chunk size isolates individual stall recommendations perfectly. The 100-character overlap acts as an informational safety net, ensuring that critical context—such as a food court name mentioned at the end of a sentence isn't severed from the stall's review in the subsequent chunk. This was updated from the initial 500-character chunk size as there were enough chunks being produced.
+My sources consist heavily of highly structured campus directory links, store operational matrices, and short student reviews/menu items. A smaller, precise chunk size of 500 characters guarantees that specific details (such as a single dining hall’s hours or a specific menu item profile like "Fitbites salad bowls") stay contained within a tight semantic window without being diluted by unrelated campus locations. The 100-character overlap balances this constraint by preserving necessary context across structural shifts or markdown tables, ensuring that location tags or parent headers are not cut off mid-sentence during splitting.
 
 ---
 
 ## Retrieval Approach
 
-<!-- Which embedding model are you using (e.g., all-MiniLM-L6-v2 via sentence-transformers)?
-     How many chunks will you retrieve per query (top-k)?
-     If you were deploying this for real users and cost wasn't a constraint, what tradeoffs
-     would you weigh in choosing a different embedding model — context length, multilingual
-     support, accuracy on domain-specific text, latency? -->
-
 **Embedding model:**
-text-embedding-3-small
+`llama-3.3-70b-versatile`
 
 **Top-k:**
-K=5 chunks per query.
+5 chunks
 
 **Production tradeoff reflection:**
-If deploying this system to real users with an unlimited budget, the core tradeoff to weigh is colloquial text accuracy versus operational latency. Campus dining data is highly conversational and packed with localized university shorthand (like "North Spine" or "Can 2") and regional food slang (like "Xiang Guo"). While text-embedding-3-small is efficient, upgrading to an enterprise-grade model with higher dimensional resolution, such as text-embedding-3-large, would better map these highly specific student terms to formal locations without losing semantic nuance. Furthermore, rather than relying on an external API that introduces network latency and risks during peak campus traffic times, a premium alternative would involve hosting a powerful open-weights model.
+If deploying this to real users at scale, running a massive 70-billion parameter model like `llama-3.3-70b-versatile` purely for extracting dense vector representations presents massive latency challenges. While its parameter scale grants it a deep semantic understanding of complex student slang, messy context fragments, and campus abbreviations (e.g., "BSC", "CPP"), the hosting overhead is extremely heavy compared to lightweight, dedicated embedding endpoints.
 
+If cost and infrastructure constraints were entirely removed in production, the primary trade-off we would evaluate is latency vs. contextual depth. Because campus dining is entirely localized and English-centric, we would gladly trade away broad multilingual capabilities and massive context windows in exchange for lightning-fast search latency and a vocabulary index highly fine-tuned for high-density, short text student discourse.
 ---
 
 ## Evaluation Plan
 
-<!-- List your 5 test questions with their expected correct answers.
-     Questions should be specific enough that you can judge whether the system's response
-     is right or wrong. "What are good dining halls?" is too vague.
-     "What do students say about wait times at [dining hall name] during lunch?" is testable. -->
-
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | Where can I find vegetarian options on campus and are they clean? | Di San Xiao Chi Bu has dedicated vegetarian options; cross-contamination is actively monitored by staff.	You can eat at Di San Xiao Chi Bu. Reviews confirm staff monitor cross-contamination. |
-| 2 | How much should a student budget daily for food court meals? | Around $50 to $80 NTD per baseline bento meal; student IDs yield an extra 10-15% off at select chains. |
-| 3 | Which food stalls stay open past 8:00 PM for late-night studying? | Specific locations in the North Spine cluster reliably stay open until 10:00 PM. |
-| 4 | Is the local night market a viable alternative for daily student budgets? | Yes, boundary zones like Gongguan/Shuiyuan serve as affordable transitions when halls close. |
-| 5 | What is the best dish to order at the North Spine food court? | Document 7 highlights the Dim Sum and Western options, but warns of massive peak-hour lines. |
+| 1 | Where can I find healthy or vegetarian-friendly options? | Fitbites offers salad bowls of multiple varieties. |
+| 2 | What is Goomo? | Goomo is a nearby boba shop that provides cheap snacks and drinks. |
+| 3 | What are some of the popular foods at Goomo? | Their fruit teas and popcorn chicken are some of their most purchased items. |
+| 4 | What are meal points? | Meal points are plans that students can purchase to spend on food. |
+| 5 | What type of food does Fitbites serve? | Fitbites (located near the Residence Suites) serves warm bowls, salads, hot subs, and paninis. |
 
 ---
 
 ## Anticipated Challenges
 
-<!-- What could go wrong? Name at least two specific risks with reasoning.
-     Consider: noisy or inconsistent documents, missing source attribution, off-topic
-     retrieval, chunks that split key information across boundaries. -->
-
-1. Campus dining reviews on forums like Reddit are highly conversational and unstructured. A student might mention a specific venue ("The basement food court in the Student Union") at the beginning of a post, but list their specific stall warnings and pricing details multiple paragraphs later. If the chunking boundary cuts down the middle, the vector store will hold a highly descriptive chunk about a dish (e.g., "The $60 bento box is a lifesaver...") that completely lacks the location. This risk leads to off-target retrieval.
-
-2. Because standard embedding models like text-embedding-3-small are trained on generalized global web data, they can struggle with the local terminology unique to a single campus community. Students frequently use abbreviations (e.g., "North Spine", "Can 2", "The Hive") or regional food terms. The system risks encountering semantic drift where the embedding model fails to group a review mentioning a nickname with a user query using the official building name, resulting in the retrieval system completely missing the advice.
+1. **Information Splitting across Table Boundaries:** Because much of the campus directory info (like hours, location numbers, and menus) lives within dense markdown structures and HTML matrices, standard text chunking could easily shear a dining hall's name away from its operating hours. This would result in completely unanchored data fragments inside the vector store.
+2. **Hallucination of Non-Existent Menus/Prices:** Since open-source student commentary and unofficial websites update infrequently, the Generation model (`gemini-2.5-flash` / `gemini-2.5-pro`) might rely on its pre-trained global knowledge to invent generic pricing or menu options when the local vector store context is sparse. This directly undermines our goal of delivering an accurate campus-specific guide.
 
 ---
 
 ## Architecture
-
-<!-- Draw a diagram of your pipeline showing the five stages:
-     Document Ingestion → Chunking → Embedding + Vector Store → Retrieval → Generation
-     Label each stage with the tool or library you're using.
-     You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
-     You'll use this diagram as context when prompting AI tools to implement each stage. -->
 
 ==========================================================================================
                          UNOFFICIAL CAMPUS DINING GUIDE: RAG PIPELINE
@@ -135,7 +106,7 @@ If deploying this system to real users with an unlimited budget, the core tradeo
         ▼
  [STAGE 3: EMBEDDING & VECTOR STORE]
    │
-   ├─► Embedding Model: openai.embeddings (text-embedding-3-small) -> 1,536 Dimensions
+   ├─► Embedding Model: google-genai API (text-embedding-004) -> 768 Dimensions
    │
    └─► Vector Database Store: ChromaDB / FAISS
         │   (Stores dense vectors mapped to student context strings + source URLs)
@@ -154,7 +125,7 @@ If deploying this system to real users with an unlimited budget, the core tradeo
    ├─► Prompt Blueprint: Grounded System Prompt
    │    │   (Enforces zero outside extrapolation; demands exact inline markdown URLs)
    │    ▼
-   ├─► Generation Model: OpenAI API (gpt-4o-mini)
+   ├─► Generation Model: Gemini API (gemini-2.5-flash)
    │
    └─► Final Output: Grounded, slang-aware student guide response with direct source links
         │
@@ -166,20 +137,20 @@ If deploying this system to real users with an unlimited budget, the core tradeo
 
 ## AI Tool Plan
 
-<!-- For each part of the pipeline below, describe:
-     - Which AI tool you plan to use (Claude, Copilot, ChatGPT, etc.)
-     - What you'll give it as input (which sections of this planning.md, which requirements)
-     - What you expect it to produce
-     - How you'll verify the output matches your spec
+### 1. Data Ingestion & Chunking
+* **AI Tool:** Gemini
+* **Inputs:** *Chunking Strategy* section, sample markdown text from our document matrix, and the target specifications (500 Chars size, 100 Chars overlap).
+* **Expected Output:** A clean Python script (`ingest.py`) utilizing standard string tools or regex to split files securely into overlapping windows, passing forward parent source metadata strings attached to each block.
+* **Verification Strategy:** Run the code locally on Source #5 and print out lengths and boundary fragments of three consecutive chunks to ensure characters uniformly sit around 500 characters with correct context preservation.
 
-     "I'll use AI to help me code" is not a plan.
-     "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
-     with my specified chunk size and overlap" is a plan. -->
+### 2. Embedding & Vector DB Storage
+* **AI Tool:** Gemini
+* **Inputs:** *Architecture Stage 3* parameters (`text-embedding-004` via the `google-genai` SDK, ChromaDB/FAISS setup documentation).
+* **Expected Output:** Modular Python code initializing the database, connecting to the Gemini client API, mapping text chunks into dense embeddings, and persisting them cleanly to local disk storage.
+* **Verification Strategy:** Execute a quick collection count assert query to verify that the final database record count perfectly mirrors the total chunk count generated by our ingestion script.
 
-
-
-**Milestone 3 — Ingestion and chunking:**
-
-**Milestone 4 — Embedding and retrieval:**
-
-**Milestone 5 — Generation and interface:**
+### 3. Retrieval & Generation Interface
+* **AI Tool:** Gemini
+* **Inputs:** *Retrieval Approach*, *Evaluation Plan*, and *Architecture Stages 4 & 5* specifications.
+* **Expected Output:** An execution pipeline function `query_guide(user_prompt: str)` that fetches the top 5 chunks, frames them inside an XML block, triggers a `gemini-2.5-flash` generation request, and streams back responses.
+* **Verification Strategy:** Fire all 5 evaluation test questions through the query pipeline sequentially. Compare system outputs manually against our hardcoded *Expected answers* to check for accuracy, and look out for structural markdown links to verify strict source grounding.
