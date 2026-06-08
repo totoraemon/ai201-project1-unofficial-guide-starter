@@ -17,87 +17,68 @@ Official campus dining portals usually offer nothing more than menus, operating 
 
 ## Document Sources
 
-<!-- List every source you collected documents from.
-     Be specific: include URLs, subreddit names, forum thread titles, or file names.
-     Aim for variety — sources that together cover different subtopics or perspectives. -->
-
 | # | Source | Type | URL or file path |
-|---|--------|------|-----------------|
-| 1 | Miss Tam Chiak | Website | https://www.misstamchiak.com/ntu/ |
-| 2 | Catharctic Life | Short Review | https://catharticstudent.wordpress.com/2017/05/18/ntu-life-top-16-best-campus-food-at-ntu/ |
-| 3 | Happy Cow | Dietary Options | https://www.happycow.net/reviews/national-taiwan-university-taipei-61065 |
-| 4 | Home Sweet Home | Local Guide | https://en.hshsharehouse.com/top-eats-and-fun-spots-guide-for-ntu-international-students/ |
-| 5 | Sweet Potato Island | Video Guide | https://www.youtube.com/watch?v=KwoJw9QZfH0 |
-| 6 | Reddit | Recommendations | https://www.reddit.com/r/taiwan/comments/1fbqzg9/what_do_college_students_eat_on_a_daily_basis/ |
-| 7 | Reddit | Recommendations | https://www.reddit.com/r/NTU/comments/15ktgd7/best_eateries_on_campus/ |
-| 8 | Reddit | Food Reviews | https://www.reddit.com/r/NTU/comments/1b17qxm/food_reviews_and_reccomendations/ |
-| 9 | Reddit | Recommendations | https://www.reddit.com/r/NTU/comments/w0wi4b/list_of_places_to_eat_at_ntu_food/ |
-| 10 | Reddit | Recommendations | https://www.reddit.com/r/taiwan/comments/snpsqo/budgetfriendly_dim_sum_restaurant_attracts_fans/ |
+| --- | --- | --- | --- |
+| 1 | CPP Foundation Dining Hub | Campus Portal Website | [https://cppdining.com/dining-locations/](https://cppdining.com/dining-locations/) |
+| 2 | CPP Housing & Residential Dining Portal | Campus Portal Website | [https://www.cpp.edu/campus-life/housing-dining.shtml](https://www.cpp.edu/campus-life/housing-dining.shtml) |
+| 3 | Open House Special Operation Matrix | Campus Informational Directory | [https://www.cpp.edu/openhouse/dining.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fopenhouse%2Fdining.shtml) |
+| 4 | Building 72 Mapping Data (Centerpointe & Lollicup) | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=458829&list=loc](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D458829%26list%3Dloc) |
+| 5 | Building 52 & 35 Operations Node | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=27142&list=cat](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D27142%26list%3Dcat) |
+| 6 | Building 1070574 Geolocation Map (Fitbites) | Campus Informational Directory | [https://www.cpp.edu/maps/text-map.php?id=1070574&list=loc](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fmaps%2Ftext-map.php%3Fid%3D1070574%26list%3Dloc) |
+| 7 | Housing Staff Administration Records | Campus Informational Directory | [https://www.cpp.edu/housing/about/staff-directory.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fhousing%2Fabout%2Fstaff-directory.shtml) |
+| 8 | ASI Poly Pantry Portal | Campus Portal Website | [https://asi.cpp.edu/services/poly-pantry/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Fservices%2Fpoly-pantry%2F) |
+| 9 | ASI BSC Amenities Index (Qdoba, Saddles, Vending) | Campus Informational Directory | [https://asi.cpp.edu/facilities/bsc/bsc-amenities/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Ffacilities%2Fbsc%2Fbsc-amenities%2F) |
+| 10 | ASI Bronco Student Center General Info | Campus Informational Directory | [https://asi.cpp.edu/facilities/bsc/bsc-info/](https://www.google.com/search?q=https%3A%2F%2Fasi.cpp.edu%2Ffacilities%2Fbsc%2Fbsc-info%2F) |
+| 11 | CPP PolyCentric University News | Campus News Article | [https://www.cpp.edu/polycentric/index.shtml](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fpolycentric%2Findex.shtml) |
+| 12 | CPP Student Services Gateway | Campus Portal Website | [https://www.cpp.edu/student-gateway/](https://www.google.com/search?q=https%3A%2F%2Fwww.cpp.edu%2Fstudent-gateway%2F) |
+| 13 | Goomo Tea Shop Homepage | Company Website | [https://www.goomoteashop.com/](https://www.google.com/search?q=https%3A%2F%2Fwww.goomoteashop.com%2F) |
+| 14 | The Habit Burger & Grill Tracker | Company Website | [https://www.habitburger.com/locations/claremont/](https://www.google.com/search?q=https%3A%2F%2Fwww.habitburger.com%2Flocations%2Fclaremont%2F) |
 
 ---
 
 ## Chunking Strategy
 
-<!-- Describe your chunking approach with enough specificity that someone else could reproduce it.
-     Include:
-     - Chunk size (characters or tokens) and why that size fits your documents
-     - Overlap size and why (or why not) you used overlap
-     - Any preprocessing you did before chunking (e.g., stripping HTML, removing headers)
-     - What your final chunk count was across all documents -->
-
 **Chunk size:**
-500 characters (approximately 80–120 tokens).
+500 characters (approximately 100 tokens / 100 words).
 
 **Overlap:**
-100 characters (approximately 20 tokens).
+100 characters (approximately 20 tokens / 20 words).
 
 **Why these choices fit your documents:**
-Campus dining data is uniquely fragmented. Subreddit comment threads and reviews contain high-density, localized advice (e.g., a single sentence warning about a food stall's peak queue times or a specific dietary allergen). A large chunk size (like 2,000 characters) would dilute these tips with surrounding, unrelated noise.
+My sources consist heavily of highly structured campus directory links, store operational matrices, and short student reviews/menu items. A smaller, precise chunk size of 500 characters guarantees that specific details (such as a single dining hall’s hours or a specific menu item profile like "Fitbites salad bowls") stay contained within a tight semantic window without being diluted by unrelated campus locations. The 100-character overlap balances this constraint by preserving necessary context across structural shifts or markdown tables, ensuring that location tags or parent headers are not cut off mid-sentence during splitting.
 
-The 500-character chunk size isolates individual stall recommendations perfectly. The 100-character overlap acts as an informational safety net, ensuring that critical context—such as a food court name mentioned at the end of a sentence isn't severed from the stall's review in the subsequent chunk.
+**Preprocessing:**
+I begin by creating a set of keywords that are common across dining locations (such as am/pm for time, open/closed for availability, menu, price, etc.). Then, each cleaned text is split at a newline to ensure that there are no breaks in a chunk.
 
 **Final chunk count:**
-142 chunks (across all 10 scraped source documents).
+82 chunks (across all 14 scraped source documents).
 
 ---
 
 ## Embedding Model
 
-<!-- Name the embedding model you used and explain your choice.
-     Then answer: if you were deploying this system for real users and cost wasn't a constraint,
-     what tradeoffs would you weigh in choosing a different model?
-     Consider: context length limits, multilingual support, accuracy on domain-specific text,
-     latency, and local vs. API-hosted. -->
-
 **Model used:**
-text-embedding-3-small (OpenAI) configured to 1533 dimensions.
+`all-MiniLM-L6-v2`
 
 **Production tradeoff reflection:**
-The primary trade-off to weigh is multilingual and colloquial text handling versus latency. Campus dining data is heavily identity-driven; students frequently mix official campus building codes (e.g., "North Spine", "Canteen 2") with regional food slang ("Xiang Guo", "Bento"). text-embedding-3-small handles standard English well but can struggle with localized slang syntax.
+The transformer model eliminates the manual maintenance of vocabulary checklists. While initally completing this project, I utilized a different embedding model and had to specify multiple keywords of different categories. Even with the list, the model still failed to properly respond to user queries. With the `all-MiniLM-L6-v2` embedding model, the system can parse through synonyms, structural changes, and potentially misspelled inputs. The main difference is that it requires Python dependencies (`torch`, `sentence-transformers`, `numpy`).
 
-A model like Cohere natively supports content quality scoring, ensuring that short, slang-heavy, highly accurate Reddit comments score higher in vector similarity searches than long, generic blog posts. While hosting a heavy local model increases operational latency, it eliminates unpredictable upstream API outages during critical university periods.
+Additionally, my program utilizes a native database with `LightweightVectorStore`, keeping query latency beneath 5 milliseconds. However, restarting the script forces the pipeline to crawl, parse, clean, and re-embed all 14 target web nodes from scratch. If any source URL experiences downtime or anti-bot blocks during startup, those locations vanish from memory. This was evident through my multiple runs of my program as I could oneasily say an hour was lost on ending the program as I had to fix the line of code that was wrong, delete the created data files, and re-run the program (which loaded all of the sources, ran the test chunks, and ran the retrieval chunks before loading the webpage).
 
 ---
 
 ## Grounded Generation
 
-<!-- Explain how your system enforces grounding — how does it prevent the LLM from answering
-     beyond the retrieved documents?
-     Describe both your system prompt (what instruction you gave the model) and any structural
-     choices (e.g., how you formatted the context, whether you filtered low-relevance chunks).
-     Do not just say "I told it to use the documents" — show the actual instruction or explain
-     the mechanism. -->
-
 **System prompt grounding instruction:**
 You are the Unofficial Campus Dining Guide Assistant. Your sole task is to answer user queries using ONLY the verified student review fragments provided in the context block below. 
 
 Strict Rules:
-1. If the context does not explicitly mention the food stall, pricing, dietary status, or hours asked about, state clearly: "I cannot find reliable student documentation for that specific option."
+1. If the context does not explicitly mention the food location, pricing, dietary status, or hours asked about, state clearly: "I do not possess sufficient reference documentation to answer this question accurately."
 2. Do not extrapolate, assume, or use any outside knowledge about generic restaurant chains or global cuisines.
 3. Every factual claim must be explicitly tied to a source URL from the context.
 
 **How source attribution is surfaced in the response:**
-The system forces the LLM to use markdown hyperlinks matching the original document source array. Instead of a generic bibliography block at the bottom of the response, source attribution is injected inline immediately following the specific claim, formatted exactly like this: "...the vegetarian bento box at Canteen 1 costs $65 NTD, but the line gets unmanageable after 12:15 PM ([Source 3](https://www.happycow.net/...))."
+The system forces the LLM to use markdown hyperlinks matching the original document source array. Instead of a generic bibliography block at the bottom of the response, source attribution is injected inline immediately following the specific claim, formatted exactly like this: "...the salad bowl at Fitbites cost $12, but the line gets unmanageable after 9:00 PM (source)."
 
 ---
 
@@ -109,48 +90,42 @@ The system forces the LLM to use markdown hyperlinks matching the original docum
 
 | # | Question | Expected answer | System response (summarized) | Retrieval quality | Response accuracy |
 |---|----------|-----------------|------------------------------|-------------------|-------------------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Where can I find healthy or vegetarian-friendly options? | Fitbites offers salad bowls of multiple varieties. | You can find healthy options at the Farm Store, which sells fresh produce grown and sold from the campus farm, orchards, and greenhouses. Additionally, the Poly Fresh Market and the Student-staffed store at Kellogg Ranch (FitbitesCampus) offer fresh produce. | Partially relevant | Partially accurate |
+| 2 | What is Goomo? | Goomo is a nearby boba shop that provides cheap snacks and drinks. | Goomo Tea Shop is a local bubble tea destination in Walnut, CA, dedicated to serving fresh, handcrafted tea and drinks with natural ingredients. | Relevant | Accurate |
+| 3 | What foods are offered at Vista Market? | Vista Market provides a wide assortment of snacks and meals, from fresh to frozen. | Vista Market offers a mix of essentials for home-cooked meals, personal items, grab-and-go options like sushi and parfaits, and other grocery staples. | Relevant | Partially accurate |
+| 4 | What are meal points? | Meal points are plans that students can purchase to spend on food. | I do not possess sufficient reference documentation to answer this question accurately. | Off-target | Inaccurate |
+| 5 | What type of food does Fitbites serve? | Fitbites (located near the Residence Suites) serves warm bowls, salads, hot subs, and paninis. | Fitbites serves a fusion of diverse cuisines, including warm bowls, salads, hot subs, and paninis. They also offer savory bites such as mozzarella sticks and fried zucchini to add to meals. | Relevant | Accurate |
 
 **Retrieval quality:** Relevant / Partially relevant / Off-target  
 **Response accuracy:** Accurate / Partially accurate / Inaccurate
+
+For responses I deemed as relevant, they provided information that related to the user's query. For responses I deemed as accurate, they provided infromation that answered the user's query correctly. For example, with the second test question, the model gave the location (which is relevant) of Goomo and a short description of what it sells (which is accurate.)
 
 ---
 
 ## Failure Case Analysis
 
-<!-- Identify at least one question where retrieval or generation did not work as expected.
-     Write a specific explanation of *why* it failed, tied to a part of the pipeline.
-
-     "The answer was wrong" is not an explanation.
-
-     "The relevant information was split across a chunk boundary, so retrieval returned
-     only half the context — the model didn't have enough to answer correctly" is an explanation.
-
-     "The embedding model treated the professor's nickname as out-of-vocabulary and returned
-     results from an unrelated review" is an explanation. -->
-
 **Question that failed:**
+What are meal points?
 
 **What the system returned:**
+I do not possess sufficient reference documentation to answer this question accurately.
 
 **Root cause (tied to a specific pipeline stage):**
+In my Architecture diagram (located in `planning.md`), I specify that Stage 1 is 'Document Ingestion', where all the sources that the model will build chunks from are cleaned for the future stages. Within this stage, there was no specific source that explained what meal points are or how they work. This causes the model to reach the "grounded" answer of not being able to produce a proper response as it has not been provided sufficient information to do so.
 
 **What you would change to fix it:**
+To fix this issue, I would add more sources to my source list in `rag_pipeline.py`.
 
 ---
 
 ## Spec Reflection
 
-<!-- Reflect on how planning.md shaped your implementation.
-     Answer both questions with at least 2–3 sentences each. -->
-
 **One way the spec helped you during implementation:**
+`planning.md` helped me draft out each step and pathway I would need to take to complete this project. Initially, when I was confused about which part of the program was tackling what, I could easily determine the stage because of the ASCII drawing that `planning.md` specified was required. This helped my comprehension of the program's timeline: take in documents, pre-process documents to prepare for chunking, chunk documents into ~500 characters, test queries against chunks, and implement user interface.
 
 **One way your implementation diverged from the spec, and why:**
+With my first few iterations of `planning.md`, I was utilizing a different embedding model with a fairly strict vocabulary list. However, this was extremely inefficient as I had to specify dozens of words ranging from type of building to food options. After re-reading the guides from Codepath, I realized I could use the `all-MiniLM-L6-v2` embedding model, which completely eliminated my need for the extensive vocabulary list.
 
 ---
 
@@ -167,12 +142,12 @@ The system forces the LLM to use markdown hyperlinks matching the original docum
 
 **Instance 1**
 
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
+- *What I gave the AI:* I provided Gemini my Chunking Strategy section from `planning.md` and requested it to implement the chunk_text() method.
+- *What it produced:* It recommended cleaning the sources beforehand, resulting in preceding method clean_document_text(). It returned a function that utilized a limit of 120 words and splits at newlines.
+- *What I changed or overrode:* I overrode the chunk size from 120 to 100 as many of my sources are webpages with short descriptions rather than long, extensive guides about the food locations.
 
 **Instance 2**
 
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
+- *What I gave the AI:* I provided Gemini my Architecture diagram from `planning.md` and requested it to implement the embeddings while storing them in a database.
+- *What it produced:* It returned a function that generated the embeddings, added the chunks from chunk_text(), and retrieved context from the user's query to match against the chunks.
+- *What I changed or overrode:* I noticed that the initial output utilized a database and re-read the guides from Codepath to see if they were necessary. Since this is a small collection of sources, I requested a modification to store the files locally.
